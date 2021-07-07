@@ -6,6 +6,7 @@
 <link rel="canonical" href="{{ .Permalink }}" />
 
 {{ template "_internal/google_analytics.html" . }}
+{{ template "_internal/twitter_cards.html" . }}
 
 <!-- Theme CSS -->
 <link rel="stylesheet" href="{{ "assets/style.css" | absURL }}">
@@ -30,15 +31,10 @@
 
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image" />
-{{ if (isset $.Site.Params "twitter") }}
-  {{ if (isset $.Site.Params.Twitter "site") }}
-    <meta name="twitter:site" content="{{ $.Site.Params.Twitter.site }}" />
-  {{ end }}
-    <meta name="twitter:creator" content="{{ if .IsHome }}{{ $.Site.Params.Twitter.creator }}{{ else if isset .Params "authortwitter" }}{{ .Params.authorTwitter }}{{ else }}{{ .Params.Author }}{{ end }}" />
-    {{- with $.Params.images -}} <meta name="twitter:image" content="{{ index . 0 | absURL }}" /> {{ end }}
-    <meta name="twitter:description" content="{{ if .IsHome }}{{ $.Site.Params.Subtitle }}{{ else if .Description}}{{ .Description | plainify }}{{ else }}{{ .Summary | plainify }}{{ end }}" />
+{{ with .Site.Social.twitter -}}
+<meta name="twitter:creator" content="@{{ . }}"/>
+{{ end -}}
 
-{{ end }}
 
 <!-- OG data -->
 <meta property="og:locale" content="{{ $.Site.Language.Lang }}" />
