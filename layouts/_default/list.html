@@ -36,7 +36,7 @@
         <div class="post-content">
           {{ if .Params.showFullContent }}
             {{ .Content }}
-          {{ else if .Description }}
+          {{ else if not .Description }}
             {{ .Description | markdownify }}
           {{ else }}
             {{ .Summary }}
