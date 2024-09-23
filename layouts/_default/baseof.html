@@ -8,6 +8,12 @@
 </head>
 {{ if .IsHome }}
 <div id="particles-js" style="z-index: 2;"></div>
+{{ else if eq .Title "About Me" }}
+<div id="particles-js" style="z-index: 2;"></div>
+{{ else if eq .Title "All Posts" }}
+<div id="particles-js" style="z-index: 2;"></div>
+{{ else if eq .Kind "taxonomy" }}
+<div id="particles-js" style="z-index: 2;"></div>
 {{ else }}
 <div id="particles-js"></div>
 {{ end }}
