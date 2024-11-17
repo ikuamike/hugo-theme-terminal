@@ -27,8 +27,7 @@
       {{ end }}
     </span>
   {{ end }}
-  {{ partial "cover.html" . }}
-
+  
   {{ if (.Params.Toc | default .Site.Params.Toc) }}
     <div class="table-of-contents">
       <h2>
@@ -37,6 +36,8 @@
       {{ .TableOfContents }}
     </div>
   {{ end }}
+
+  {{ partial "cover.html" . }}
 
   <div class="post-content">
     {{- with .Content -}}
